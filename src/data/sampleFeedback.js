@@ -1,36 +1,51 @@
 export const sampleFeedback = [
   {
     id: 1,
-    text: `The app feels fast and reliable. The dashboard loads quickly and the interface is well designed. We love the analytics, but dark mode is missing and would be a great addition. Overall, it has been a great experience for our team.`,
+    text: `The interface is clean and easy to use, and the dashboard is well designed overall. However, search is slow when working with large datasets and filtering results takes too long. The app also becomes unresponsive occasionally during peak usage. Dark mode would be a great addition, along with better export options and notifications for long-running tasks.`,
   },
 
   {
     id: 2,
-    text: `The product is frustrating to use at times. The app is slow when searching large datasets and filters are confusing. It often takes too long to load results. A better search system and improved performance would help a lot.`,
+    text: `While the product works as expected most of the time, performance drops significantly when multiple users are active. Pages load slowly and the app can feel laggy. Some areas of the dashboard are confusing and not intuitive at first. A mobile app, improved search, and better customization options would help a lot.`,
   },
 
   {
     id: 3,
-    text: `The app is not working properly for us. It crashes frequently when exporting data and performance is poor during peak hours. The dashboard becomes unusable, and this has been a disappointing experience so far.`,
+    text: `We encountered several crashes while exporting reports, and in some cases the app was not working at all. These stability issues make the system feel unreliable. Pricing also feels expensive for smaller teams. Features like integrations, analytics improvements, and notifications would help justify the cost.`,
   },
 
   {
     id: 4,
-    text: `Overall the experience is okay, but several features are missing. Dark mode and export options like CSV are needed. A mobile app would also make it easier for our team to work on the go.`,
+    text: `The dashboard looks polished, but certain workflows are hard to use and difficult to understand. Important settings are confusing and not intuitive for new users. Performance is also slow in some sections and takes too long to load data. Adding dark mode, better documentation, and more customization would improve the experience.`,
   },
 
   {
     id: 5,
-    text: `The interface is intuitive and easy to use. Performance has been smooth and reliable. We would love more customization options and better integration with our existing tools.`,
+    text: `Overall performance is acceptable, but the app freezes occasionally when handling large files. Search and filtering are slow and feel inefficient. Pricing seems overpriced compared to similar tools. A mobile app, improved export functionality, and better integrations would make this product more competitive.`,
   },
 
   {
     id: 6,
-    text: `The product is confusing for new users. Some settings are hard to find and the dashboard layout is not intuitive. Search is slow and takes too long to return results. Improving usability should be a priority.`,
+    text: `The interface is well designed and easy to navigate, but usability issues appear in more complex workflows. Some features are hard to use and confusing without guidance. The app becomes unresponsive at times and performance drops during heavy usage. Notifications, dashboard customization, and a mobile app would significantly improve usability.`,
   },
 
   {
     id: 7,
-    text: `Fantastic product overall. The app feels fast, stable, and well designed. Analytics are powerful and easy to understand. Adding notifications and more customization would make it even better.`,
+    text: `Although the analytics section is useful, performance can be poor when loading large reports. Pages load slowly and sometimes feel laggy. We also experienced occasional crashes during exports. Adding better analytics controls, export options, and notifications would improve reliability.`,
+  },
+
+  {
+    id: 8,
+    text: `The product is generally stable, but certain actions take too long to complete. Filtering and search are slow, and the app becomes unresponsive in some cases. Pricing feels too costly for the current feature set. Dark mode, better integrations, and improved customization would add a lot of value.`,
+  },
+
+  {
+    id: 9,
+    text: `Some parts of the dashboard are confusing and difficult to use, especially for first-time users. Performance is inconsistent, with pages loading slowly and freezing occasionally. The app also crashed once during data export. A mobile app, better onboarding, and notifications for background tasks would help.`,
+  },
+
+  {
+    id: 10,
+    text: `The UI feels modern and well designed, but the experience is held back by slow performance and stability issues. Search takes too long, the app freezes occasionally, and exports can cause crashes. Pricing feels expensive given these issues. Improving performance, adding dark mode, and expanding integrations should be top priorities.`,
   },
 ];
