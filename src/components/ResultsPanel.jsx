@@ -25,7 +25,7 @@ export default function ResultsPanel({ result, sentimentCounts }) {
   const insight = generateInsights(result)
 
   return (
-    <div className='space-y-16'>
+    <div className='space-y-12'>
       {/* Insights summary */}
       <div className='bg-slate-900 text-white rounded-3xl p-7'>
         <p className='text-sm uppercase tracking-wide text-slate-300 mb-1'>
