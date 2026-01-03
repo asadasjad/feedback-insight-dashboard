@@ -1,17 +1,26 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import FeedbackInput from '../components/FeedbackInput'
 import ResultsPanel from '../components/ResultsPanel'
 import LoadingState from '../components/LoadingState'
 import EmptyState from '../components/EmptyState'
 import ErrorState from '../components/ErrorState'
+import Footer from '../components/Footer'
 import { analyzeFeedback } from '../utils/analyseFeedback'
 import { sampleFeedback } from '../data/sampleFeedback'
 
 export default function Dashboard() {
   const [text, setText] = useState('')
   const [result, setResult] = useState(null)
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
+
+  const [sentimentCounts, setSentimentCounts] = useState({
+    positive: 0,
+    neutral: 0,
+    negative: 0,
+  })
+
+  const resultsRef = useRef(null)
 
   const handleAnalyze = () => {
     if (text.trim().length < 20) {
@@ -24,20 +33,15 @@ export default function Dashboard() {
     setError('')
     setResult(null)
 
-    try {
-      setTimeout(() => {
-        const data = analyzeFeedback(text)
-        setResult(data)
-        setSentimentCounts((prev) => ({
-          ...prev,
-          [data.sentiment]: prev[data.sentiment] + 1,
-        }))
-        setStatus('success')
-      }, 1000)
-    } catch {
-      setError('Something went wrong while analyzing feedback.')
-      setStatus('error')
-    }
+    setTimeout(() => {
+      const data = analyzeFeedback(text)
+      setResult(data)
+      setSentimentCounts((prev) => ({
+        ...prev,
+        [data.sentiment]: prev[data.sentiment] + 1,
+      }))
+      setStatus('success')
+    }, 900)
   }
 
   const handleSample = () => {
@@ -48,25 +52,41 @@ export default function Dashboard() {
     setError('')
     setStatus('idle')
   }
-  const [sentimentCounts, setSentimentCounts] = useState({
-    positive: 0,
-    neutral: 0,
-    negative: 0,
-  })
+
+  /**
+   * Scroll to results when analysis completes
+   * (mobile + desktop)
+   */
+  useEffect(() => {
+    if (status === 'success' && resultsRef.current) {
+      setTimeout(() => {
+        const y =
+          resultsRef.current.getBoundingClientRect().top +
+          window.pageYOffset -
+          80 // offset for header
+
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth',
+        })
+      }, 150)
+    }
+  }, [status])
 
   return (
-    <div className='min-h-screen  p-6 bg-indigo-50 transition-colors'>
-      <div className='max-w-6xl mx-auto space-y-6'>
+    <div className='min-h-screen bg-indigo-50'>
+      <div className='max-w-6xl mx-auto px-6 pt-6 pb-24 space-y-8'>
+        {/* Header */}
         <header className='space-y-1'>
           <h1 className='text-3xl font-bold text-gray-900'>
             Feedback Insight Dashboard
           </h1>
           <p className='text-sm text-gray-500'>
-            Analyze customer feedback to uncover issues, requests, and
-            priorities.
+            Analyze customer feedback to uncover issues, requests, and priorities.
           </p>
         </header>
 
+        {/* Input */}
         <FeedbackInput
           text={text}
           setText={setText}
@@ -75,14 +95,26 @@ export default function Dashboard() {
           loading={status === 'loading'}
         />
 
-        <div className='transition-all duration-300'>
+        {/* Results */}
+        <div
+          ref={resultsRef}
+          className='pt-6 space-y-6 transition-opacity duration-300'
+        >
           {status === 'idle' && !text && <EmptyState />}
           {status === 'loading' && <LoadingState />}
           {status === 'error' && <ErrorState message={error} />}
           {status === 'success' && result && (
-            <ResultsPanel result={result} sentimentCounts={sentimentCounts} />
+            <ResultsPanel
+              result={result}
+              sentimentCounts={sentimentCounts}
+            />
           )}
         </div>
+      </div>
+
+      {/* Footer */}
+      <div className='mt-20'>
+        <Footer />
       </div>
     </div>
   )

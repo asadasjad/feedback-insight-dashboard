@@ -41,48 +41,72 @@ export default function ResultsPanel({ result, sentimentCounts }) {
         />
 
         {/* Complaints */}
-        <div className='bg-white  rounded-3xl p-7 shadow-md'>
-          <p className='text-sm text-slate-500 mb-2'>Top Complaints</p>
+        <div className="bg-white rounded-3xl p-7 shadow-sm">
+  <p className="text-sm text-slate-500 mb-3">
+    Top Complaints
+  </p>
 
-          {result.topComplaints.length === 0 ? (
-            <p className='text-sm text-slate-400'>
-              No major complaints detected
-            </p>
-          ) : (
-            <ul className='space-y-2 text-sm'>
-              {result.topComplaints.map((item) => (
-                <li
-                  key={item}
-                  className='flex justify-between border-b pb-1 capitalize'
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+  {result.topComplaints.length === 0 ? (
+    <p className="text-sm text-slate-400">
+      No major complaints detected
+    </p>
+  ) : (
+    <ul className="space-y-2">
+      {result.topComplaints.map((item, index) => (
+        <li
+          key={item}
+          className={`
+            flex items-center justify-between
+            rounded-xl px-3 py-2
+            text-sm capitalize
+            ${
+              index === 0
+                ? "bg-red-50 text-red-700 font-medium"
+                : "bg-slate-50 text-slate-700"
+            }
+          `}
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
 
         {/* Feature Requests */}
-        <div className='bg-white rounded-3xl p-7 shadow-md'>
-          <p className='text-sm text-slate-500 mb-2'>Feature Requests</p>
+        <div className="bg-white rounded-3xl p-7 shadow-sm">
+  <p className="text-sm text-slate-500 mb-3">
+    Feature Requests
+  </p>
 
-          {result.topFeatureRequests.length === 0 ? (
-            <p className='text-sm text-slate-400'>
-              No clear feature requests detected
-            </p>
-          ) : (
-            <ul className='space-y-2 text-sm'>
-              {result.topFeatureRequests.map((item) => (
-                <li
-                  key={item}
-                  className='flex justify-between border-b pb-1 capitalize'
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+  {result.topFeatureRequests.length === 0 ? (
+    <p className="text-sm text-slate-400">
+      No clear feature requests detected
+    </p>
+  ) : (
+    <ul className="space-y-2">
+      {result.topFeatureRequests.map((item, index) => (
+        <li
+          key={item}
+          className={`
+            flex items-center justify-between
+            rounded-xl px-3 py-2
+            text-sm capitalize
+            ${
+              index === 0
+                ? "bg-indigo-50 text-indigo-700 font-medium"
+                : "bg-slate-50 text-slate-700"
+            }
+          `}
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
       </div>
     </div>
   )

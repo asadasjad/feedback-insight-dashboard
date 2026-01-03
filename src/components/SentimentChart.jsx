@@ -4,28 +4,28 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
  * Maps sentiment to visual colors
  */
 const COLORS = {
-  positive: "#4bea68", // your green (kept)
-  neutral: "#E5E7EB",  // gray-200
-  negative: "#FECACA", // red-200
+  positive: "#4bea68",
+  neutral: "#E5E7EB",
+  negative: "#FECACA",
 };
 
 export default function SentimentChart({ sentiment, sentimentCounts }) {
   const data = [
-    { key: "positive", value: sentimentCounts.positive },
-    { key: "neutral", value: sentimentCounts.neutral },
-    { key: "negative", value: sentimentCounts.negative },
+    { key: "positive", label: "Positive", value: sentimentCounts.positive },
+    { key: "neutral", label: "Neutral", value: sentimentCounts.neutral },
+    { key: "negative", label: "Negative", value: sentimentCounts.negative },
   ];
 
   const hasData = data.some((d) => d.value > 0);
   if (!hasData) return null;
 
   return (
-    <div className="bg-white rounded-3xl p-7 shadow-md">
-      <p className="text-sm text-slate-500 mb-2">
+    <div className="bg-white rounded-3xl p-7 shadow-sm">
+      <p className="text-sm text-slate-500 mb-3">
         Sentiment Distribution
       </p>
 
-      <div className="h-40">
+      <div className="h-40 mb-3">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -60,8 +60,23 @@ export default function SentimentChart({ sentiment, sentimentCounts }) {
         </ResponsiveContainer>
       </div>
 
-      <p className="text-center text-sm mt-2 capitalize font-medium">
-        Overall: {sentiment}
+      {/* Legend */}
+      <div className="flex justify-center gap-4 text-xs text-slate-600 mb-2">
+        {data.map((item) => (
+          <div key={item.key} className="flex items-center gap-1.5">
+            <span
+              className="inline-block h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: COLORS[item.key] }}
+            />
+            {item.label}
+          </div>
+        ))}
+      </div>
+
+      {/* Overall sentiment */}
+      <p className="text-center text-sm font-medium text-slate-700 capitalize">
+        Overall sentiment:{" "}
+        <span className="font-semibold">{sentiment}</span>
       </p>
     </div>
   );
