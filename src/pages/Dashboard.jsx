@@ -77,12 +77,26 @@ export default function Dashboard() {
     <div className='min-h-screen bg-indigo-50'>
       <div className='max-w-6xl mx-auto px-6 pt-6 pb-24 space-y-8'>
         {/* Header */}
-        <header className='space-y-1'>
-          <h1 className='text-3xl font-bold text-gray-900'>
+        <header className='space-y-4 mb-10'>
+          <h1
+            className='
+    text-2xl sm:text-3xl
+    font-semibold
+    text-gray-900
+    tracking-tight
+  '
+          >
             Feedback Insight Dashboard
           </h1>
-          <p className='text-sm text-gray-500'>
-            Analyze customer feedback to uncover issues, requests, and priorities.
+
+          <p
+            className='
+    text-sm sm:text-base
+    text-gray-500
+    max-w-xl
+  '
+          >
+            Turn raw customer feedback into clear, actionable insights.
           </p>
         </header>
 
@@ -104,10 +118,7 @@ export default function Dashboard() {
           {status === 'loading' && <LoadingState />}
           {status === 'error' && <ErrorState message={error} />}
           {status === 'success' && result && (
-            <ResultsPanel
-              result={result}
-              sentimentCounts={sentimentCounts}
-            />
+            <ResultsPanel result={result} sentimentCounts={sentimentCounts} />
           )}
         </div>
       </div>

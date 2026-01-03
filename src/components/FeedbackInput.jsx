@@ -15,7 +15,7 @@ export default function FeedbackInput({
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-9">
       
       {/* Input Card */}
       <div className="lg:col-span-2 border-indigo-100 bg-gray-100 rounded-3xl p-5 sm:p-6">
@@ -29,7 +29,7 @@ export default function FeedbackInput({
             resize-none
             rounded-2xl
             bg-white
-            p-4
+            p-7
             text-sm
             shadow-sm
             focus:outline-none
@@ -90,7 +90,7 @@ export default function FeedbackInput({
       </div>
 
       {/* Info Card */}
-      <div className="bg-white rounded-3xl p-6 space-y-4 shadow-sm">
+      <div className="bg-white rounded-3xl p-6 space-y-8 shadow-sm">
         <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide">
           What we analyze
         </h3>

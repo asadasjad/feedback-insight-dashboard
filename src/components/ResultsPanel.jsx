@@ -25,16 +25,16 @@ export default function ResultsPanel({ result, sentimentCounts }) {
   const insight = generateInsights(result)
 
   return (
-    <div className='space-y-6'>
+    <div className='space-y-16'>
       {/* Insights summary */}
-      <div className='bg-slate-900 text-white rounded-3xl p-6'>
+      <div className='bg-slate-900 text-white rounded-3xl p-7'>
         <p className='text-sm uppercase tracking-wide text-slate-300 mb-1'>
           Insights Summary
         </p>
         <p className='text-sm leading-relaxed'>{insight}</p>
       </div>
       {/* Top dashboard grid */}
-      <div className='grid gap-4 md:grid-cols-3'>
+      <div className='grid gap-8 md:grid-cols-3'>
         <SentimentChart
           sentiment={result.sentiment}
           sentimentCounts={sentimentCounts}
